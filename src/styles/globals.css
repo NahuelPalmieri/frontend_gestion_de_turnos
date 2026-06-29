@@ -1,0 +1,83 @@
+/* ===========================
+   RESET
+=========================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===========================
+   VARIABLES
+=========================== */
+
+:root {
+    --primary: #0d6efd;
+    --success: #198754;
+    --warning: #fd7e14;
+    --purple: #6f42c1;
+
+    --background: #f4f6f9;
+    --surface: #ffffff;
+
+    --text: #1f2937;
+    --text-secondary: #6b7280;
+
+    --border: #e5e7eb;
+
+    --radius: 12px;
+    --transition: .25s ease;
+}
+
+/* ===========================
+   BODY
+=========================== */
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================
+   ROOT
+=========================== */
+
+#root {
+    min-height: 100vh;
+}
+
+/* ===========================
+   ELEMENTOS
+=========================== */
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}

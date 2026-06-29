@@ -1,0 +1,72 @@
+.pantalla {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+.pantalla h1 {
+    font-size: 8rem;
+    font-weight: 700;
+    color: #0d6efd;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 6px;
+}
+
+.pantalla h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #1f2937;
+
+    margin-bottom: 15px;
+}
+
+.pantalla h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #198754;
+}
+
+@media (max-width: 992px) {
+
+    .pantalla h1 {
+        font-size: 6rem;
+    }
+
+    .pantalla h2 {
+        font-size: 2.2rem;
+    }
+
+    .pantalla h3 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .pantalla {
+        padding: 20px;
+    }
+
+    .pantalla h1 {
+        font-size: 4rem;
+    }
+
+    .pantalla h2 {
+        font-size: 1.7rem;
+    }
+
+    .pantalla h3 {
+        font-size: 1.5rem;
+    }
+
+}
