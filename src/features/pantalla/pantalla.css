@@ -1,0 +1,84 @@
+.pantalla {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+
+    padding: 30px;
+}
+
+.contenedor {
+
+    width: 100%;
+    max-width: 900px;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 60px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.turno {
+
+    font-size: 8rem;
+
+    color: #0d6efd;
+
+    margin-bottom: 25px;
+
+}
+
+.nombre {
+
+    font-size: 2.5rem;
+
+    color: #1f2937;
+
+    margin-bottom: 15px;
+
+}
+
+.caja {
+
+    font-size: 2rem;
+
+    color: #6b7280;
+
+}
+
+@media (max-width:768px){
+
+    .contenedor{
+
+        padding:40px 20px;
+
+    }
+
+    .turno{
+
+        font-size:5rem;
+
+    }
+
+    .nombre{
+
+        font-size:1.8rem;
+
+    }
+
+    .caja{
+
+        font-size:1.5rem;
+
+    }
+
+}

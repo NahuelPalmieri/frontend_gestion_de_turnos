@@ -1,0 +1,116 @@
+.operador {
+    min-height: 100vh;
+    background: #f5f7fb;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+.operador h1 {
+    margin-bottom: 30px;
+    color: #1f2937;
+}
+
+.caja {
+    width: 320px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+
+    margin-bottom: 35px;
+}
+
+.caja span {
+    color: #6b7280;
+}
+
+.caja h2 {
+    margin-top: 10px;
+    font-size: 2rem;
+}
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 320px;
+}
+
+.botones button {
+    padding: 18px;
+
+    border: none;
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.botones button:hover {
+    transform: translateY(-3px);
+}
+
+.btnA {
+    background: #0d6efd;
+}
+
+.btnB {
+    background: #198754;
+}
+
+.btnC {
+    background: #fd7e14;
+}
+
+.resultado {
+    margin-top: 40px;
+
+    width: 320px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+.resultado h3 {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.resultado p {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+@media (max-width: 500px) {
+
+    .caja,
+    .botones,
+    .resultado {
+        width: 100%;
+    }
+
+}
