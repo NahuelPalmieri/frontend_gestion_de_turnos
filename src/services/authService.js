@@ -2,22 +2,18 @@ import api from "../config/api";
 
 export async function login(usuario, password) {
 
-    if (usuario === "admin" && password === "1234") {
-        return {
-            ok: true,
-            token: "TOKEN_TEMPORAL",
-            usuario: {
-                id: 1,
-                nombre: "Administrador",
-                rol: "ADMIN",
-            },
-        };
-    }
+    const respuesta = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            usuario,
+            password
+        })
+    });
 
-    return {
-        ok: false,
-        mensaje: "Usuario o contraseña incorrectos",
-    };
+    return await respuesta.json();
 }
 
 export async function validarCodigoEmpresa(codigo) {
