@@ -1,46 +1,26 @@
-import { api } from "./api";
+import api from "../config/api";
 
-/**
- * Login del usuario.
- * Por ahora simulado.
- * Más adelante usará:
- *
- * return api.post("/auth/login", {
- *     usuario,
- *     contrasena,
- * });
- */
-export async function login(usuario, contrasena) {
+export async function login(usuario, password) {
 
-    // ======== SIMULACIÓN ========
-
-    if (
-        usuario === "admin" &&
-        contrasena === "1234"
-    ) {
+    if (usuario === "admin" && password === "1234") {
         return {
             ok: true,
+            token: "TOKEN_TEMPORAL",
             usuario: {
                 id: 1,
                 nombre: "Administrador",
-                rol: "admin",
+                rol: "ADMIN",
             },
         };
     }
 
     return {
         ok: false,
-        mensaje: "Usuario o contraseña incorrectos.",
+        mensaje: "Usuario o contraseña incorrectos",
     };
 }
 
-/**
- * Validación del código de empresa.
- * Más adelante consultará al backend.
- */
 export async function validarCodigoEmpresa(codigo) {
-
-    // ======== SIMULACIÓN ========
 
     if (codigo === "123456") {
         return {
@@ -55,6 +35,6 @@ export async function validarCodigoEmpresa(codigo) {
 
     return {
         ok: false,
-        mensaje: "Código de empresa incorrecto.",
+        mensaje: "Código incorrecto",
     };
 }
