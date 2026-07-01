@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
     res.send("Backend funcionando");
 });
 
+app.get("/login", (req, res) => {
+    res.send("La ruta login existe");
+});
+
 app.post("/login", (req, res) => {
     const { usuario, password } = req.body;
 
