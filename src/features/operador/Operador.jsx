@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./operador.css";
+import Layout from "../../components/layout/Layout";
 
 export default function Operador() {
 
@@ -51,53 +52,51 @@ export default function Operador() {
 
     return (
 
-        <div className="operador">
+    <Layout title="Panel de Atención">
 
-            <h1>Panel de Atención</h1>
+        <div className="caja">
 
-            <div className="caja">
+            <span>Operador en Caja</span>
 
-                <span>Operador en Caja</span>
-
-                <h2>{numeroCaja}</h2>
-
-            </div>
-
-            <div className="botones">
-
-                <button
-                    className="btnA"
-                    onClick={() => llamar("A")}
-                >
-                    Llamar A ({colaA})
-                </button>
-
-                <button
-                    className="btnB"
-                    onClick={() => llamar("B")}
-                >
-                    Llamar B ({colaB})
-                </button>
-
-                <button
-                    className="btnC"
-                    onClick={() => llamar("C")}
-                >
-                    Llamar C ({colaC})
-                </button>
-
-            </div>
-
-            <div className="resultado">
-
-                <h3>Turno llamado</h3>
-
-                <p>{turnoActual}</p>
-
-            </div>
+            <h2>{numeroCaja}</h2>
 
         </div>
 
-    );
+        <div className="botones">
+
+            <button
+                className="btnA"
+                onClick={() => llamar("A")}
+            >
+                Llamar A ({colaA})
+            </button>
+
+            <button
+                className="btnB"
+                onClick={() => llamar("B")}
+            >
+                Llamar B ({colaB})
+            </button>
+
+            <button
+                className="btnC"
+                onClick={() => llamar("C")}
+            >
+                Llamar C ({colaC})
+            </button>
+
+        </div>
+
+        <div className="resultado">
+
+            <h3>Turno llamado</h3>
+
+            <p>{turnoActual}</p>
+
+        </div>
+
+    </Layout>
+
+);
 
 }

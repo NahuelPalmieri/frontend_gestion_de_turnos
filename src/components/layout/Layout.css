@@ -1,0 +1,23 @@
+.layout {
+    min-height: 100vh;
+    background: #f5f7fb;
+}
+
+.layout-header {
+    background: white;
+
+    padding: 20px 40px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+
+    margin-bottom: 30px;
+}
+
+.layout-header h1 {
+    margin: 0;
+    color: #1f2937;
+}
+
+.layout-content {
+    padding: 0 40px 40px;
+}
