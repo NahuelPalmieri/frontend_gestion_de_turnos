@@ -74,9 +74,17 @@ export default function Operador() {
 
         <Layout title="Panel de Atención">
 
-            <div className="panel-operador">
+            <div
+                style={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "space-between",
+                    alignItems: "stretch",
+                    gap: "40px"
+                }}
+            >
 
-                <div className="lado-izquierdo">
+                <div style={{ width: "350px" }}>
 
                     <div className="caja">
 
@@ -86,7 +94,10 @@ export default function Operador() {
 
                     </div>
 
-                    <div className="botones">
+                    <div
+                        className="botones"
+                        style={{ marginTop: "25px" }}
+                    >
 
                         <button
                             className="btnA"
@@ -116,7 +127,13 @@ export default function Operador() {
 
                 </div>
 
-                <div className="resultado">
+                <div
+                    className="resultado"
+                    style={{
+                        flex: 1,
+                        maxWidth: "none"
+                    }}
+                >
 
                     <h3>Turno llamado</h3>
 
