@@ -6,6 +6,7 @@ import Home from "../features/home/Home";
 import Usuario from "../features/usuario/Usuario";
 import Operador from "../features/operador/Operador";
 import Pantalla from "../features/pantalla/Pantalla";
+import Configuracion from "../features/configuracion/Configuracion";
 
 function AppRoutes() {
 
@@ -46,7 +47,7 @@ function AppRoutes() {
                 path="/configuracion"
                 element={
                     <PrivateRoute>
-                        <h1>Configuración</h1>
+                        <Configuracion />
                     </PrivateRoute>
                 }
             />

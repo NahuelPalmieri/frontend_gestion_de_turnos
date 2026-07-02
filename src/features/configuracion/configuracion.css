@@ -1,0 +1,42 @@
+.configuracion{
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:#f5f7fb;
+
+    text-align:center;
+
+}
+
+.configuracion h1{
+
+    font-size:120px;
+
+    margin:0;
+
+}
+
+.configuracion h2{
+
+    margin-top:20px;
+
+    font-size:64px;
+
+    color:#1f2937;
+
+}
+
+.configuracion p{
+
+    margin-top:20px;
+
+    font-size:24px;
+
+    color:#6b7280;
+
+}
