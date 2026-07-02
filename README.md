@@ -4,7 +4,13 @@ Sistema web para la gestión de turnos desarrollado como Challenge Técnico para
 
 ## Descripción
 
-La aplicación permite administrar un sistema de turnos con distintos perfiles de uso.
+La aplicación permite administrar un sistema de turnos con distintos perfiles de uso. Está pensado para poder ser escalable.
+Los dos usuarios creados de muestra son:
+* usuario1 = admin
+* pasword1 = admin.1234
+* usuario1 = Pedro93
+* pasword1 = Pepe.1993
+La empresa creada de muestra con su su sucursal, tiene como codigo de sucursal: 123456
 
 ### Funcionalidades
 
@@ -83,6 +89,7 @@ Durante el desarrollo utilicé herramientas de Inteligencia Artificial como apoy
 Principalmente:
 
 * ChatGPT
+* Gemini
 
 La IA fue utilizada para:
 
