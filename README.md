@@ -10,6 +10,7 @@ Los dos usuarios creados de muestra son:
 * pasword1 = admin.1234
 * usuario1 = Pedro93
 * pasword1 = Pepe.1993
+
 La empresa creada de muestra con su su sucursal, tiene como codigo de sucursal: 123456
 
 ### Funcionalidades
