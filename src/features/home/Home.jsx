@@ -7,7 +7,7 @@ import "./home.css";
 import HomeCard from "./components/HomeCard";
 import LoginModal from "./components/LoginModal";
 import EmpresaModal from "./components/EmpresaModal";
-import ProximamenteModal from "./components/ProximamenteModal";
+import proximamenteModal from "./components/proximamenteModal";
 
 export default function Home() {
 
@@ -129,7 +129,7 @@ export default function Home() {
                 onSuccess={empresaCorrecta}
             />
 
-            <ProximamenteModal
+            <proximamenteModal
                 abierto={mostrarProximamente}
                 onClose={() => setMostrarProximamente(false)}
             />

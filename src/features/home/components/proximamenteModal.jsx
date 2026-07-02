@@ -1,6 +1,6 @@
 import Modal from "../../../components/ui/Modal/Modal";
 
-export default function ProximamenteModal({ abierto, onClose }) {
+export default function proximamenteModal({ abierto, onClose }) {
 
     return (
         <Modal
