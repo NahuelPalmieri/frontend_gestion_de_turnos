@@ -4,17 +4,35 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
 
-    const [usuario, setUsuario] = useState(null);
+    const [usuario, setUsuario] = useState(() => {
+
+        const guardado = localStorage.getItem("usuario");
+
+        return guardado ? JSON.parse(guardado) : null;
+
+    });
 
     function login(datosUsuario) {
+
+        localStorage.setItem(
+            "usuario",
+            JSON.stringify(datosUsuario)
+        );
+
         setUsuario(datosUsuario);
+
     }
 
     function logout() {
+
+        localStorage.removeItem("usuario");
+
         setUsuario(null);
+
     }
 
     return (
+
         <AuthContext.Provider
             value={{
                 usuario,
@@ -22,11 +40,17 @@ export function AuthProvider({ children }) {
                 logout,
             }}
         >
+
             {children}
+
         </AuthContext.Provider>
+
     );
+
 }
 
 export function useAuth() {
+
     return useContext(AuthContext);
+
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Modal from "../../../components/ui/Modal/Modal";
 import { validarCodigoEmpresa } from "../../../services/authService";
+import { useEmpresa } from "../../../context/EmpresaContext";
 
 export default function EmpresaModal({
     abierto,
@@ -9,26 +10,35 @@ export default function EmpresaModal({
     onSuccess,
 }) {
 
+    const { setEmpresa } = useEmpresa();
+
     const [codigo, setCodigo] = useState("");
     const [error, setError] = useState("");
 
     async function continuar(e) {
+
         e.preventDefault();
 
         const respuesta = await validarCodigoEmpresa(codigo);
 
         if (!respuesta.ok) {
+
             setError(respuesta.mensaje);
             return;
+
         }
+
+        setEmpresa(respuesta.empresa);
 
         setError("");
         setCodigo("");
 
         onSuccess();
+
     }
 
     return (
+
         <Modal
             abierto={abierto}
             titulo="Código de empresa"
@@ -39,7 +49,6 @@ export default function EmpresaModal({
 
                 <input
                     type="password"
-                    maxLength={6}
                     placeholder="Código de empresa"
                     value={codigo}
                     onChange={(e) => setCodigo(e.target.value)}
@@ -69,5 +78,7 @@ export default function EmpresaModal({
             </form>
 
         </Modal>
+
     );
+
 }

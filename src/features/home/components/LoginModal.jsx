@@ -2,39 +2,51 @@ import { useState } from "react";
 
 import Modal from "../../../components/ui/Modal/Modal";
 import { login } from "../../../services/authService";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function LoginModal({
     abierto,
     onClose,
     onSuccess,
 }) {
+
+    const { login: loginContext } = useAuth();
+
     const [usuario, setUsuario] = useState("");
     const [contrasena, setContrasena] = useState("");
     const [error, setError] = useState("");
 
     async function ingresar(e) {
+
         e.preventDefault();
 
         const respuesta = await login(usuario, contrasena);
 
         if (!respuesta.ok) {
+
             setError(respuesta.mensaje);
             return;
+
         }
+
+        loginContext(respuesta.usuario);
 
         setError("");
         setUsuario("");
         setContrasena("");
 
         onSuccess(respuesta.usuario);
+
     }
 
     return (
+
         <Modal
             abierto={abierto}
             titulo="Iniciar sesión"
             onClose={onClose}
         >
+
             <form onSubmit={ingresar}>
 
                 <input
@@ -73,6 +85,9 @@ export default function LoginModal({
                 </div>
 
             </form>
+
         </Modal>
+
     );
+
 }

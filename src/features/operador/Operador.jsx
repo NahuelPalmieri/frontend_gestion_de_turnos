@@ -1,12 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./operador.css";
 import Layout from "../../components/layout/Layout";
 
-import { llamarSiguiente } from "../../services/operadorService";
-import { obtenerColas } from "../../services/colasService";
+import { llamarSiguiente, obtenerColas } from "../../services/operadorService";
+
+import { useAuth } from "../../context/AuthContext";
+import { useEmpresa } from "../../context/EmpresaContext";
 
 export default function Operador() {
+
+    const navigate = useNavigate();
+
+    const { logout } = useAuth();
+    const { limpiarEmpresa } = useEmpresa();
 
     const [colaA, setColaA] = useState(0);
     const [colaB, setColaB] = useState(0);
@@ -16,7 +24,7 @@ export default function Operador() {
 
     const numeroCaja = 1;
 
-    async function actualizarColas() {
+    async function cargarColas() {
 
         try {
 
@@ -36,11 +44,7 @@ export default function Operador() {
 
     useEffect(() => {
 
-        actualizarColas();
-
-        const intervalo = setInterval(actualizarColas, 2000);
-
-        return () => clearInterval(intervalo);
+        cargarColas();
 
     }, []);
 
@@ -59,20 +63,46 @@ export default function Operador() {
 
             setTurnoActual(respuesta.turno.numero);
 
-            actualizarColas();
+            setColaA(respuesta.pendientes.A);
+            setColaB(respuesta.pendientes.B);
+            setColaC(respuesta.pendientes.C);
 
         } catch (error) {
 
             console.error(error);
+
             alert("Error al conectar con el servidor.");
 
         }
 
     }
 
+    function cerrarSesion() {
+
+        logout();
+        limpiarEmpresa();
+
+        navigate("/");
+
+    }
+
     return (
 
         <Layout title="Panel de Atención">
+
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginBottom: "20px"
+                }}
+            >
+
+                <button onClick={cerrarSesion}>
+                    Cerrar sesión
+                </button>
+
+            </div>
 
             <div className="caja">
 
@@ -86,24 +116,33 @@ export default function Operador() {
 
                 <button
                     className="btnA"
-                    onClick={() => llamar("A")}
                     disabled={colaA === 0}
+                    style={{
+                        opacity: colaA === 0 ? 0.5 : 1
+                    }}
+                    onClick={() => llamar("A")}
                 >
                     Llamar A ({colaA})
                 </button>
 
                 <button
                     className="btnB"
-                    onClick={() => llamar("B")}
                     disabled={colaB === 0}
+                    style={{
+                        opacity: colaB === 0 ? 0.5 : 1
+                    }}
+                    onClick={() => llamar("B")}
                 >
                     Llamar B ({colaB})
                 </button>
 
                 <button
                     className="btnC"
-                    onClick={() => llamar("C")}
                     disabled={colaC === 0}
+                    style={{
+                        opacity: colaC === 0 ? 0.5 : 1
+                    }}
+                    onClick={() => llamar("C")}
                 >
                     Llamar C ({colaC})
                 </button>
