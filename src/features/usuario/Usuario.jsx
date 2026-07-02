@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./usuario.css";
+import { solicitarTurno as pedirTurno } from "../../services/turnoService";
 
 export default function Usuario() {
 
@@ -30,17 +31,33 @@ export default function Usuario() {
 
     }
 
-    function seleccionarTramite(tipo) {
+    async function seleccionarTramite(tipo) {
 
-        setTramite(tipo);
+    setTramite(tipo);
 
-        const numero = Math.floor(Math.random() * 900) + 100;
+    try {
 
-        setTurno(`${tipo}${numero}`);
+        const respuesta = await pedirTurno(dni, tipo);
+
+        if (!respuesta.ok) {
+
+            alert("No se pudo generar el turno.");
+            return;
+
+        }
+
+        setTurno(respuesta.turno);
 
         setPantalla("turno");
 
+    } catch (error) {
+
+        console.error(error);
+        alert("Error al conectar con el servidor.");
+
     }
+
+}
 
     function volverInicio() {
 
