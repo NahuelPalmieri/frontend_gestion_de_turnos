@@ -1,20 +1,12 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import "./operador.css";
 import Layout from "../../components/layout/Layout";
 
-import { llamarSiguiente, obtenerColas } from "../../services/operadorService";
-
-import { useAuth } from "../../context/AuthContext";
-import { useEmpresa } from "../../context/EmpresaContext";
+import { llamarSiguiente } from "../../services/operadorService";
+import { obtenerColas } from "../../services/colasService";
 
 export default function Operador() {
-
-    const navigate = useNavigate();
-
-    const { logout } = useAuth();
-    const { limpiarEmpresa } = useEmpresa();
 
     const [colaA, setColaA] = useState(0);
     const [colaB, setColaB] = useState(0);
@@ -24,7 +16,7 @@ export default function Operador() {
 
     const numeroCaja = 1;
 
-    async function cargarColas() {
+    async function actualizarColas() {
 
         try {
 
@@ -44,7 +36,11 @@ export default function Operador() {
 
     useEffect(() => {
 
-        cargarColas();
+        actualizarColas();
+
+        const intervalo = setInterval(actualizarColas, 2000);
+
+        return () => clearInterval(intervalo);
 
     }, []);
 
@@ -63,26 +59,14 @@ export default function Operador() {
 
             setTurnoActual(respuesta.turno.numero);
 
-            setColaA(respuesta.pendientes.A);
-            setColaB(respuesta.pendientes.B);
-            setColaC(respuesta.pendientes.C);
+            actualizarColas();
 
         } catch (error) {
 
             console.error(error);
-
             alert("Error al conectar con el servidor.");
 
         }
-
-    }
-
-    function cerrarSesion() {
-
-        logout();
-        limpiarEmpresa();
-
-        navigate("/");
 
     }
 
@@ -90,70 +74,55 @@ export default function Operador() {
 
         <Layout title="Panel de Atención">
 
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    marginBottom: "20px"
-                }}
-            >
+            <div className="panel-operador">
 
-                <button onClick={cerrarSesion}>
-                    Cerrar sesión
-                </button>
+                <div className="lado-izquierdo">
 
-            </div>
+                    <div className="caja">
 
-            <div className="caja">
+                        <span>Operador en Caja</span>
 
-                <span>Operador en Caja</span>
+                        <h2>{numeroCaja}</h2>
 
-                <h2>{numeroCaja}</h2>
+                    </div>
 
-            </div>
+                    <div className="botones">
 
-            <div className="botones">
+                        <button
+                            className="btnA"
+                            onClick={() => llamar("A")}
+                            disabled={colaA === 0}
+                        >
+                            Llamar A ({colaA})
+                        </button>
 
-                <button
-                    className="btnA"
-                    disabled={colaA === 0}
-                    style={{
-                        opacity: colaA === 0 ? 0.5 : 1
-                    }}
-                    onClick={() => llamar("A")}
-                >
-                    Llamar A ({colaA})
-                </button>
+                        <button
+                            className="btnB"
+                            onClick={() => llamar("B")}
+                            disabled={colaB === 0}
+                        >
+                            Llamar B ({colaB})
+                        </button>
 
-                <button
-                    className="btnB"
-                    disabled={colaB === 0}
-                    style={{
-                        opacity: colaB === 0 ? 0.5 : 1
-                    }}
-                    onClick={() => llamar("B")}
-                >
-                    Llamar B ({colaB})
-                </button>
+                        <button
+                            className="btnC"
+                            onClick={() => llamar("C")}
+                            disabled={colaC === 0}
+                        >
+                            Llamar C ({colaC})
+                        </button>
 
-                <button
-                    className="btnC"
-                    disabled={colaC === 0}
-                    style={{
-                        opacity: colaC === 0 ? 0.5 : 1
-                    }}
-                    onClick={() => llamar("C")}
-                >
-                    Llamar C ({colaC})
-                </button>
+                    </div>
 
-            </div>
+                </div>
 
-            <div className="resultado">
+                <div className="resultado">
 
-                <h3>Turno llamado</h3>
+                    <h3>Turno llamado</h3>
 
-                <p>{turnoActual}</p>
+                    <p>{turnoActual}</p>
+
+                </div>
 
             </div>
 

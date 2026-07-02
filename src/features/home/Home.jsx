@@ -7,6 +7,7 @@ import "./home.css";
 import HomeCard from "./components/HomeCard";
 import LoginModal from "./components/LoginModal";
 import EmpresaModal from "./components/EmpresaModal";
+import ProximamenteModal from "./components/ProximamenteModal";
 
 export default function Home() {
 
@@ -15,6 +16,7 @@ export default function Home() {
 
     const [mostrarLogin, setMostrarLogin] = useState(false);
     const [mostrarEmpresa, setMostrarEmpresa] = useState(false);
+    const [mostrarProximamente, setMostrarProximamente] = useState(false);
 
     const [destino, setDestino] = useState("");
 
@@ -50,8 +52,17 @@ export default function Home() {
     ];
 
     function abrirLogin(ruta) {
+
+         if (ruta === "/configuracion") {
+
+            setMostrarProximamente(true);
+            return;
+
+        }
+
         setDestino(ruta);
         setMostrarLogin(true);
+
     }
 
     function loginCorrecto(usuario) {
@@ -116,6 +127,11 @@ export default function Home() {
                 abierto={mostrarEmpresa}
                 onClose={() => setMostrarEmpresa(false)}
                 onSuccess={empresaCorrecta}
+            />
+
+            <ProximamenteModal
+                abierto={mostrarProximamente}
+                onClose={() => setMostrarProximamente(false)}
             />
 
         </div>
