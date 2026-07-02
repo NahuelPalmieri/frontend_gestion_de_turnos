@@ -8,6 +8,7 @@ import HomeCard from "./components/HomeCard";
 import LoginModal from "./components/LoginModal";
 import EmpresaModal from "./components/EmpresaModal";
 import proximamenteModal from "./components/proximamenteModal";
+import Modal from "../../components/ui/Modal/Modal";
 
 export default function Home() {
 
@@ -129,10 +130,26 @@ export default function Home() {
                 onSuccess={empresaCorrecta}
             />
 
-            <proximamenteModal
-                abierto={mostrarProximamente}
-                onClose={() => setMostrarProximamente(false)}
-            />
+            <Modal
+    abierto={mostrarProximamente}
+    titulo="Configuración"
+    onClose={() => setMostrarProximamente(false)}
+>
+
+    <div
+        style={{
+            textAlign: "center",
+            padding: "30px"
+        }}
+    >
+        <h2>🚧 PRÓXIMAMENTE</h2>
+
+        <p>
+            Esta sección estará disponible en una próxima versión.
+        </p>
+    </div>
+
+</Modal>
 
         </div>
     );
